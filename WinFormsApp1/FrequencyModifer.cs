@@ -75,6 +75,12 @@ namespace GameUsageTracker
                     string[] settings = { refreshFrequency };
                     CreateSettingsFile(settings);
                     Close();
+
+                    MessageBox.Show("The application will now restart to apply new settings.\nIf any games are running close them now or their session log will be lost", "Application restarting", default, MessageBoxIcon.Exclamation);
+
+                    Application.Restart();
+                    Environment.Exit(0);
+                   
                 }
                 else
                 {
