@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFrequency = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -42,12 +42,12 @@
             this.button1.Text = "Save and Finish";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtFrequency
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(339, 23);
-            this.textBox1.TabIndex = 1;
+            this.txtFrequency.Location = new System.Drawing.Point(12, 27);
+            this.txtFrequency.Name = "txtFrequency";
+            this.txtFrequency.Size = new System.Drawing.Size(339, 23);
+            this.txtFrequency.TabIndex = 1;
             // 
             // label1
             // 
@@ -64,7 +64,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 99);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFrequency);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrequencyModifer";
@@ -79,7 +79,7 @@
         #endregion
 
         private Button button1;
-        private TextBox textBox1;
+        private TextBox txtFrequency;
         private Label label1;
     }
 }
