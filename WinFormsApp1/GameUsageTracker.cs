@@ -200,10 +200,10 @@ namespace WinFormsApp1
                         runningProcess.Exited += RunningProcess_Exited;
                         GameRunning = true;
 
-                        Invoke(() =>
-                        {
+                        //Invoke(() =>
+                        //{
 
-                        });
+                        //});
 
                         break;
                     }
