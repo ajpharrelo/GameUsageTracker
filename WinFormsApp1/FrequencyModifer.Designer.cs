@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSaveExit = new System.Windows.Forms.Button();
             this.txtFrequency = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnSaveExit
             // 
-            this.button1.Location = new System.Drawing.Point(12, 56);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(339, 33);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Save and Finish";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSaveExit.Location = new System.Drawing.Point(12, 56);
+            this.btnSaveExit.Name = "btnSaveExit";
+            this.btnSaveExit.Size = new System.Drawing.Size(339, 33);
+            this.btnSaveExit.TabIndex = 0;
+            this.btnSaveExit.Text = "Save and Finish";
+            this.btnSaveExit.UseVisualStyleBackColor = true;
+            this.btnSaveExit.Click += new System.EventHandler(this.btnSaveExit_Click);
             // 
             // txtFrequency
             // 
@@ -54,9 +55,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 15);
+            this.label1.Size = new System.Drawing.Size(182, 15);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Game check frequency (Seconds)";
+            this.label1.Text = "Game check frequency (Minutes)";
             // 
             // FrequencyModifer
             // 
@@ -65,7 +66,7 @@
             this.ClientSize = new System.Drawing.Size(363, 99);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtFrequency);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSaveExit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrequencyModifer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -78,7 +79,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button btnSaveExit;
         private TextBox txtFrequency;
         private Label label1;
     }

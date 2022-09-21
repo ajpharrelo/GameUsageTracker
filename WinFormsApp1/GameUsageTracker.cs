@@ -11,9 +11,12 @@ namespace WinFormsApp1
         private List<Game> GameList = new List<Game>();
         private List<GameSession> GameSessionList = new List<GameSession>(); 
         private Process? runningProcess = new Process();
+        private int FrequencyRate;
 
         private string sessionFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\GameUsageTracker\sessions.json";
+        private string settingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\GameUsageTracker\settings.json";
         private string listFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\GameUsageTracker\games.json";
+
 
         #endregion
 
@@ -22,6 +25,44 @@ namespace WinFormsApp1
         public GameUsageTracker()
         {
             InitializeComponent();
+        }
+
+        private void CreateSettingsFile(string[] settings)
+        {
+            using (StreamWriter sw = File.CreateText(settingsPath))
+            {
+                sw.Write(JsonSerializer.Serialize(settings));
+                sw.Flush();
+                sw.Close();
+            }
+        }
+
+        private string GetFrequencySetting()
+        {
+            if (File.Exists(settingsPath))
+            {
+                using (StreamReader sr = File.OpenText(settingsPath))
+                {
+                    string[]? settings = JsonSerializer.Deserialize<string[]>(sr.ReadToEnd());
+                    if (settings != null)
+                    {
+                        sr.Close();
+                        return settings[0];
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                }
+            }
+            else
+            {
+
+                string[] settings = { "1" };
+                CreateSettingsFile(settings);
+            }
+
+            return "";
         }
 
         private void GameUsageTracker_Load(object sender, EventArgs e)
@@ -36,8 +77,10 @@ namespace WinFormsApp1
 
             BackgroundWorker.RunWorkerAsync();
 
-            //Set column width for ListView
+            // Set user setfrequency
+            FrequencyRate = int.Parse(GetFrequencySetting());
 
+            //Set column width for ListView
             int width = listView2.Width;
             for (int i = 0; i < listView2.Columns.Count; i++)
             {
@@ -213,8 +256,8 @@ namespace WinFormsApp1
                     }
                 }
                 
-                // Check every minute if a game is running 
-                await Task.Delay(1 * 60 * 1000);
+                // Check every x amount of minutes if a game is running 
+                await Task.Delay(FrequencyRate * 60 * 1000);
             }
         }
 
