@@ -249,7 +249,7 @@ namespace WinFormsApp1
                     if (p != null)
                     {
                         runningProcess = p;
-                        outputLog.Add(game.Title + " Started running at: " + runningProcess.StartTime);
+                        outputLog.Add(game.Title + " started running at: " + runningProcess.StartTime.ToShortTimeString());
                         runningProcess.EnableRaisingEvents = true;
                         runningProcess.Exited += RunningProcess_Exited;
                         GameRunning = true;
@@ -280,7 +280,7 @@ namespace WinFormsApp1
             {
                 TimeSpan Runtime = runningProcess.ExitTime - runningProcess.StartTime;
 
-                outputLog.Add(CurrentGame.Title + " Exited at: " + runningProcess.ExitTime + " - Runtime: " + Runtime.ToString(@"hh\:mm\:ss"));
+                outputLog.Add(CurrentGame.Title + " exited at: " + runningProcess.ExitTime.ToShortTimeString() + " - Runtime: " + Runtime.ToString(@"hh\:mm\:ss"));
                 GameSession session = new GameSession(CurrentGame.ExecutablePath, runningProcess.StartTime, runningProcess.ExitTime, DateTime.Now);
                 LogGameSession(session);
                 LoadGameSessions();
@@ -387,12 +387,11 @@ namespace WinFormsApp1
             frequencyFrm.Show();
         }
 
-        #endregion
-
         private void viewOutputLogs_Click(object sender, EventArgs e)
         {
             Form openLogs = new OutputLog(outputLog);
             openLogs.Show();
         }
+        #endregion
     }
 }

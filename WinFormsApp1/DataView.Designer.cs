@@ -1,6 +1,6 @@
 ﻿namespace GameUsageTracker
 {
-    partial class OutputLog
+    partial class DataView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.outputList = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // outputList
-            // 
-            this.outputList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.outputList.FormattingEnabled = true;
-            this.outputList.ItemHeight = 15;
-            this.outputList.Location = new System.Drawing.Point(12, 13);
-            this.outputList.Name = "outputList";
-            this.outputList.Size = new System.Drawing.Size(659, 319);
-            this.outputList.TabIndex = 0;
-            // 
-            // OutputLog
+            // DataView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 344);
-            this.Controls.Add(this.outputList);
-            this.Name = "OutputLog";
-            this.Text = "Output Log";
-            this.Load += new System.EventHandler(this.OutputLog_Load);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "DataView";
+            this.Text = "DataView";
+            this.Load += new System.EventHandler(this.DataView_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private ListBox outputList;
     }
 }
