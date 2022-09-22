@@ -249,7 +249,7 @@
             this.appMenuSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeCheckFrequencyToolStripMenuItem});
             this.appMenuSettings.Name = "appMenuSettings";
-            this.appMenuSettings.Size = new System.Drawing.Size(180, 22);
+            this.appMenuSettings.Size = new System.Drawing.Size(137, 22);
             this.appMenuSettings.Text = "Settings";
             // 
             // changeCheckFrequencyToolStripMenuItem
@@ -262,7 +262,7 @@
             // viewOutputLogs
             // 
             this.viewOutputLogs.Name = "viewOutputLogs";
-            this.viewOutputLogs.Size = new System.Drawing.Size(180, 22);
+            this.viewOutputLogs.Size = new System.Drawing.Size(137, 22);
             this.viewOutputLogs.Text = "Output logs";
             this.viewOutputLogs.Click += new System.EventHandler(this.viewOutputLogs_Click);
             // 
