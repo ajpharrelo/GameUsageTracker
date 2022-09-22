@@ -13,9 +13,10 @@ namespace WinFormsApp1
         private Process? runningProcess = new Process();
         private int FrequencyRate;
 
-        private string sessionFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\GameUsageTracker\sessions.json";
-        private string settingsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\GameUsageTracker\settings.json";
-        private string listFile = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\GameUsageTracker\games.json";
+        private static string saveDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\GameUsageTracker";
+        private string sessionFile = saveDirectory + @"\sessions.json";
+        private string settingsPath = saveDirectory + @"\settings.json";
+        private string listFile = saveDirectory + @"\games.json";
 
 
         #endregion
@@ -29,17 +30,25 @@ namespace WinFormsApp1
 
         private void CreateSettingsFile(string[] settings)
         {
-            using (StreamWriter sw = File.CreateText(settingsPath))
+            if(Directory.Exists(saveDirectory))
             {
-                sw.Write(JsonSerializer.Serialize(settings));
-                sw.Flush();
-                sw.Close();
+                using (StreamWriter sw = File.CreateText(settingsPath))
+                {
+                    sw.Write(JsonSerializer.Serialize(settings));
+                    sw.Flush();
+                    sw.Close();
+                }
             }
+            else
+            {
+                Debug.WriteLine("Game usage directory not found");
+            }
+
         }
 
         private string GetFrequencySetting()
         {
-            if (File.Exists(settingsPath))
+            if (Directory.Exists(saveDirectory) && File.Exists(settingsPath))
             {
                 using (StreamReader sr = File.OpenText(settingsPath))
                 {
@@ -51,18 +60,19 @@ namespace WinFormsApp1
                     }
                     else
                     {
-                        return "";
+                        return "1";
                     }
                 }
             }
             else
             {
-
-                string[] settings = { "1" };
-                CreateSettingsFile(settings);
+                Directory.CreateDirectory(saveDirectory);
+                string[] defaultSettings = { "1" };
+                CreateSettingsFile(defaultSettings);
             }
 
-            return "";
+            MessageBox.Show("Could not load frequency setting using default (1 Minute)", "Setting read error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            return "1";
         }
 
         private void GameUsageTracker_Load(object sender, EventArgs e)
@@ -76,7 +86,6 @@ namespace WinFormsApp1
             LoadGameList();
 
             BackgroundWorker.RunWorkerAsync();
-
             // Set user setfrequency
             FrequencyRate = int.Parse(GetFrequencySetting());
 
