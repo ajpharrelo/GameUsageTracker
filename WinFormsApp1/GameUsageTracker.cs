@@ -89,6 +89,8 @@ namespace WinFormsApp1
             // Set user setfrequency
             FrequencyRate = int.Parse(GetFrequencySetting());
 
+            lblFrequency.Text = "Refresh frequency: " + FrequencyRate.ToString();
+
             //Set column width for ListView
             int width = listView2.Width;
             for (int i = 0; i < listView2.Columns.Count; i++)

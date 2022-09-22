@@ -55,6 +55,8 @@
             this.appMenu = new System.Windows.Forms.ToolStripDropDownButton();
             this.appMenuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.changeCheckFrequencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewOutputLogs = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblFrequency = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.listViewMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -110,7 +112,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 15);
+            this.label2.Size = new System.Drawing.Size(112, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Executable Location";
             // 
@@ -119,7 +121,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.Size = new System.Drawing.Size(64, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Game Title";
             // 
@@ -222,7 +224,8 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.appMenu});
+            this.appMenu,
+            this.lblFrequency});
             this.statusStrip1.Location = new System.Drawing.Point(0, 608);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1080, 22);
@@ -233,7 +236,8 @@
             // 
             this.appMenu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.appMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.appMenuSettings});
+            this.appMenuSettings,
+            this.viewOutputLogs});
             this.appMenu.Image = ((System.Drawing.Image)(resources.GetObject("appMenu.Image")));
             this.appMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.appMenu.Name = "appMenu";
@@ -245,7 +249,7 @@
             this.appMenuSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeCheckFrequencyToolStripMenuItem});
             this.appMenuSettings.Name = "appMenuSettings";
-            this.appMenuSettings.Size = new System.Drawing.Size(116, 22);
+            this.appMenuSettings.Size = new System.Drawing.Size(180, 22);
             this.appMenuSettings.Text = "Settings";
             // 
             // changeCheckFrequencyToolStripMenuItem
@@ -254,6 +258,19 @@
             this.changeCheckFrequencyToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.changeCheckFrequencyToolStripMenuItem.Text = "Change check frequency";
             this.changeCheckFrequencyToolStripMenuItem.Click += new System.EventHandler(this.changeCheckFrequencyToolStripMenuItem_Click);
+            // 
+            // viewOutputLogs
+            // 
+            this.viewOutputLogs.Name = "viewOutputLogs";
+            this.viewOutputLogs.Size = new System.Drawing.Size(180, 22);
+            this.viewOutputLogs.Text = "Output logs";
+            // 
+            // lblFrequency
+            // 
+            this.lblFrequency.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.lblFrequency.Name = "lblFrequency";
+            this.lblFrequency.Size = new System.Drawing.Size(114, 17);
+            this.lblFrequency.Text = "Refresh frequency: 1";
             // 
             // GameUsageTracker
             // 
@@ -305,5 +322,7 @@
         private ToolStripDropDownButton appMenu;
         private ToolStripMenuItem appMenuSettings;
         private ToolStripMenuItem changeCheckFrequencyToolStripMenuItem;
+        private ToolStripMenuItem viewOutputLogs;
+        private ToolStripStatusLabel lblFrequency;
     }
 }
