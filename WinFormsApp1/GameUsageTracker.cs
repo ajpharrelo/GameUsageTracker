@@ -249,7 +249,7 @@ namespace WinFormsApp1
                     if (p != null)
                     {
                         runningProcess = p;
-                        outputLog.Add(game.Title + " Started running at " + runningProcess.StartTime);
+                        outputLog.Add(game.Title + " Started running at: " + runningProcess.StartTime);
                         runningProcess.EnableRaisingEvents = true;
                         runningProcess.Exited += RunningProcess_Exited;
                         GameRunning = true;
@@ -295,7 +295,7 @@ namespace WinFormsApp1
             }
             else
             {
-                outputLog.Add("Could not find running process of game");
+                outputLog.Add("A game exited but could not find running process of game.");
                 //throw new Exception("Could not find running process");
             }
         }
