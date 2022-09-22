@@ -12,12 +12,12 @@ namespace WinFormsApp1
         private List<GameSession> GameSessionList = new List<GameSession>(); 
         private Process? runningProcess = new Process();
         private int FrequencyRate;
+        private List<string> outputLog = new List<string>();
 
         private static string saveDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\GameUsageTracker";
         private string sessionFile = saveDirectory + @"\sessions.json";
         private string settingsPath = saveDirectory + @"\settings.json";
         private string listFile = saveDirectory + @"\games.json";
-
 
         #endregion
 
@@ -249,10 +249,11 @@ namespace WinFormsApp1
                     if (p != null)
                     {
                         runningProcess = p;
-                        Debug.WriteLine(game.Title + " Started running at " + runningProcess.StartTime);
+                        outputLog.Add(game.Title + " Started running at " + runningProcess.StartTime);
                         runningProcess.EnableRaisingEvents = true;
                         runningProcess.Exited += RunningProcess_Exited;
                         GameRunning = true;
+                        game.status = Game.GameStatus.Running;
 
                         //Invoke(() =>
                         //{
@@ -263,7 +264,7 @@ namespace WinFormsApp1
                     }
                     else
                     {
-                        // Do nothing
+                       // Game is not running
                     }
                 }
                 
@@ -279,7 +280,7 @@ namespace WinFormsApp1
             {
                 TimeSpan Runtime = runningProcess.ExitTime - runningProcess.StartTime;
 
-                Debug.WriteLine(CurrentGame.Title + " Exited at: " + runningProcess.ExitTime + " Game ran for: " + Runtime.ToString(@"hh\:mm\:ss"));
+                outputLog.Add(CurrentGame.Title + " Exited at: " + runningProcess.ExitTime + " - Runtime: " + Runtime.ToString(@"hh\:mm\:ss"));
                 GameSession session = new GameSession(CurrentGame.ExecutablePath, runningProcess.StartTime, runningProcess.ExitTime, DateTime.Now);
                 LogGameSession(session);
                 LoadGameSessions();
@@ -289,11 +290,13 @@ namespace WinFormsApp1
                 });
 
                 runningProcess = null;
+                CurrentGame.status = Game.GameStatus.NotRunning;
                 BackgroundWorker.RunWorkerAsync();
             }
             else
             {
-                throw new Exception("Could not find running process");
+                outputLog.Add("Could not find running process of game");
+                //throw new Exception("Could not find running process");
             }
         }
 
@@ -385,5 +388,11 @@ namespace WinFormsApp1
         }
 
         #endregion
+
+        private void viewOutputLogs_Click(object sender, EventArgs e)
+        {
+            Form openLogs = new OutputLog(outputLog);
+            openLogs.Show();
+        }
     }
 }

@@ -264,6 +264,7 @@
             this.viewOutputLogs.Name = "viewOutputLogs";
             this.viewOutputLogs.Size = new System.Drawing.Size(180, 22);
             this.viewOutputLogs.Text = "Output logs";
+            this.viewOutputLogs.Click += new System.EventHandler(this.viewOutputLogs_Click);
             // 
             // lblFrequency
             // 
