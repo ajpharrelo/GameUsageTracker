@@ -20,6 +20,14 @@ namespace GameUsageTracker
             this.logList = logList;
         }
 
+        public void AddLog(string log)
+        {
+            if (Visible == true)
+            {
+                outputList.Items.Add(log);
+            }
+        }
+
         private void OutputLog_Load(object sender, EventArgs e)
         {
             foreach (string log in logList)
