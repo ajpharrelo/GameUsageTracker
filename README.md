@@ -11,3 +11,4 @@ An application which can track how long a game executable has been running for a
 ## Implementations to come
 - View individual game sesssions
 - Visual graphs using session data
+- Event driven check rather than loop checking which is the current method of detecting games.
