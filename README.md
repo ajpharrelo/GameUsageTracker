@@ -7,3 +7,7 @@ Tracks runtime of specified games over a period of time.
 
 ## Screenshots
 ![Planner image](https://i.imgur.com/YEhpZsX.png)
+
+## Implementations to come
+- View individual game sesssions
+- Visual graphs using session data
