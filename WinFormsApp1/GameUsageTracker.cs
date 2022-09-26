@@ -97,9 +97,12 @@ namespace WinFormsApp1
 
         private void GameUsageTracker_Load(object sender, EventArgs e)
         {
+            TrayIcon.Visible = false;
+
             listView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             listView2.MouseClick += ListView2_MouseClick;
 
+            Resize += GameUsageTracker_Resize;
             FormClosing += GameUsageTracker_FormClosing;
 
             LoadGameSessions();
@@ -118,6 +121,15 @@ namespace WinFormsApp1
                 listView2.Columns[i].Width = width / listView2.Columns.Count;
             }
 
+        }
+
+        private void GameUsageTracker_Resize(object? sender, EventArgs e)
+        {
+            if(WindowState == FormWindowState.Minimized)
+            {
+                ShowInTaskbar = false;
+                TrayIcon.Visible = true;
+            }
         }
 
         private void GameUsageTracker_FormClosing(object? sender, FormClosingEventArgs e)
@@ -407,6 +419,13 @@ namespace WinFormsApp1
         {
             Form openLogs = new OutputLog();
             openLogs.Show();
+        }
+
+        private void TrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
+            TrayIcon.Visible = false;
+            ShowInTaskbar = true;
         }
         #endregion
     }

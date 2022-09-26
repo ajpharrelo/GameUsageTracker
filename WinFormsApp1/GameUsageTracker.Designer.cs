@@ -57,6 +57,7 @@
             this.changeCheckFrequencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewOutputLogs = new System.Windows.Forms.ToolStripMenuItem();
             this.lblFrequency = new System.Windows.Forms.ToolStripStatusLabel();
+            this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.groupBox1.SuspendLayout();
             this.listViewMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -112,7 +113,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 15);
+            this.label2.Size = new System.Drawing.Size(113, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Executable Location";
             // 
@@ -121,7 +122,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 15);
+            this.label1.Size = new System.Drawing.Size(63, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Game Title";
             // 
@@ -273,6 +274,16 @@
             this.lblFrequency.Size = new System.Drawing.Size(114, 17);
             this.lblFrequency.Text = "Refresh frequency: 1";
             // 
+            // TrayIcon
+            // 
+            this.TrayIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.TrayIcon.BalloonTipText = "Open GameUsageTracker";
+            this.TrayIcon.BalloonTipTitle = "Game Usage Tracker";
+            this.TrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("TrayIcon.Icon")));
+            this.TrayIcon.Text = "Game Usage Tracker";
+            this.TrayIcon.Visible = true;
+            this.TrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIcon_MouseDoubleClick);
+            // 
             // GameUsageTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -282,6 +293,7 @@
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GameUsageTracker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game Usage Tracker";
@@ -325,5 +337,6 @@
         private ToolStripMenuItem changeCheckFrequencyToolStripMenuItem;
         private ToolStripMenuItem viewOutputLogs;
         private ToolStripStatusLabel lblFrequency;
+        private NotifyIcon TrayIcon;
     }
 }
