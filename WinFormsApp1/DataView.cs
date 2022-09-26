@@ -1,7 +1,4 @@
-﻿using LiveCharts;
-using LiveCharts.Wpf;
-
-namespace GameUsageTracker
+﻿namespace GameUsageTracker
 {
     public partial class DataView : Form
     {
