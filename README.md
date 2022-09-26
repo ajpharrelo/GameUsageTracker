@@ -1,6 +1,5 @@
 # GameUsageTracker
-An application which can track how long a game executable has been running for and add up the total runtime.
-
+An application which can track how long a game executable has been running for.
 ## Features
 - Add game executables that you wish to track
 - Track how long you have played a game in total
