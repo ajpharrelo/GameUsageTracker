@@ -61,7 +61,7 @@ namespace WinFormsApp1
             }
             else
             {
-                Debug.WriteLine("Game usage directory not found");
+                addLog("Game usage directory not found");
             }
 
         }
@@ -91,7 +91,7 @@ namespace WinFormsApp1
                 CreateSettingsFile(defaultSettings);
             }
 
-            MessageBox.Show("Could not load frequency setting using default (1 Minute)", "Setting read error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show("Using default check frequency (1 Minute)", "Using default settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return "1";
         }
 
