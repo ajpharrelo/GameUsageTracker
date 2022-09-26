@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,12 @@ namespace GameUsageTracker
 {
     public partial class OutputLog : Form
     {
-        private List<string> logList = new List<string>();
 
-        public OutputLog(List<string> logList)
+        private static string saveDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\GameUsageTracker";
+
+        public OutputLog()
         {
             InitializeComponent();
-            this.logList = logList;
         }
 
         public void AddLog(string log)
@@ -28,11 +29,32 @@ namespace GameUsageTracker
             }
         }
 
-        private void OutputLog_Load(object sender, EventArgs e)
+        private async void OutputLog_Load(object sender, EventArgs e)
         {
-            foreach (string log in logList)
+            Clipboard.SetText("Hey");
+
+            while (true)
             {
-                outputList.Items.Add(log);
+                outputList.Items.Clear();
+
+                string outputLogFile = saveDirectory + @"/output.log";
+                if(File.Exists(outputLogFile))
+                {
+                    using (StreamReader reader = File.OpenText(outputLogFile))
+                    {
+                        if (reader != null)
+                        {
+                            string line;
+                            while ((line = reader.ReadLine()) != null)
+                            {
+                                outputList.Items.Add(line);
+                            }
+                        }
+
+                        reader.Close();
+                    }
+                }
+                await Task.Delay(2500);
             }
         }
     }
