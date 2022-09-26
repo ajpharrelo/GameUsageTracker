@@ -297,6 +297,7 @@ namespace WinFormsApp1
 
                 addLog(CurrentGame.Title + " exited at: " + runningProcess.ExitTime.ToShortTimeString() + " - Runtime: " + Runtime.ToString(@"hh\:mm\:ss"));
                 GameSession session = new GameSession(CurrentGame.ExecutablePath, runningProcess.StartTime, runningProcess.ExitTime, DateTime.Now);
+                session.TotalRuntime = session.GetGameSessionRuntime(session);
                 LogGameSession(session);
                 LoadGameSessions();
                 Invoke(() =>
@@ -310,7 +311,7 @@ namespace WinFormsApp1
             }
             else
             {
-                addLog("A game exited but could not find running process of game.");
+                addLog("A game exited but could not find process of game.");
                 //throw new Exception("Could not find running process");
             }
         }
