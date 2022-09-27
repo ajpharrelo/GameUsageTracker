@@ -103,7 +103,7 @@ namespace WinFormsApp1
             listView2.MouseClick += ListView2_MouseClick;
 
             Resize += GameUsageTracker_Resize;
-            FormClosing += GameUsageTracker_FormClosing;
+            Application.ApplicationExit += Application_ApplicationExit;
 
             LoadGameSessions();
             LoadGameList();
@@ -123,6 +123,12 @@ namespace WinFormsApp1
 
         }
 
+        private void Application_ApplicationExit(object? sender, EventArgs e)
+        {
+            BackgroundWorker.Dispose();
+            File.Delete(outputLogFile);
+        }
+
         private void GameUsageTracker_Resize(object? sender, EventArgs e)
         {
             if(WindowState == FormWindowState.Minimized)
@@ -130,12 +136,6 @@ namespace WinFormsApp1
                 ShowInTaskbar = false;
                 TrayIcon.Visible = true;
             }
-        }
-
-        private void GameUsageTracker_FormClosing(object? sender, FormClosingEventArgs e)
-        {
-            BackgroundWorker.Dispose();
-            File.Delete(outputLogFile);
         }
 
         #endregion
