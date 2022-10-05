@@ -183,7 +183,7 @@ namespace WinFormsApp1
                     }
                     
 
-                    var newItem = new ListViewItem(new[] { game.Title, game.ExecutablePath, runtime.ToString("hh'h 'mm'm 'ss's'") });
+                    var newItem = new ListViewItem(new[] { game.Title, game.ExecutablePath, runtime.ToString("d'd 'hh'h 'mm'm 'ss's'") });
                     listView2.Items.Add(newItem);
                 }
             }
@@ -437,7 +437,6 @@ namespace WinFormsApp1
             TrayIcon.Visible = false;
             ShowInTaskbar = true;
         }
-        #endregion
 
         private void viewGameSessions_Click(object sender, EventArgs e)
         {
@@ -452,5 +451,6 @@ namespace WinFormsApp1
             sessionViewer.Text = gameTitle + " | Sessions";
             sessionViewer.Show();
         }
+        #endregion
     }
 }
