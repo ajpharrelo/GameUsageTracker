@@ -183,7 +183,7 @@ namespace WinFormsApp1
                     }
                     
 
-                    var newItem = new ListViewItem(new[] { game.Title, game.ExecutablePath, runtime.ToString() });
+                    var newItem = new ListViewItem(new[] { game.Title, game.ExecutablePath, runtime.ToString("hh'h 'mm'm 'ss's'") });
                     listView2.Items.Add(newItem);
                 }
             }

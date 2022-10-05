@@ -51,6 +51,7 @@
             this.Runtime = new System.Windows.Forms.ColumnHeader();
             this.listViewMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewGameSessions = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.appMenu = new System.Windows.Forms.ToolStripDropDownButton();
             this.appMenuSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,6 @@
             this.viewOutputLogs = new System.Windows.Forms.ToolStripMenuItem();
             this.lblFrequency = new System.Windows.Forms.ToolStripStatusLabel();
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.viewGameSessions = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.listViewMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -207,7 +207,7 @@
             // 
             // Runtime
             // 
-            this.Runtime.Text = "Total Runtime";
+            this.Runtime.Text = "Overall Runtime";
             // 
             // listViewMenu
             // 
@@ -215,14 +215,21 @@
             this.removeGameToolStripMenuItem,
             this.viewGameSessions});
             this.listViewMenu.Name = "contextMenuStrip1";
-            this.listViewMenu.Size = new System.Drawing.Size(181, 70);
+            this.listViewMenu.Size = new System.Drawing.Size(179, 48);
             // 
             // removeGameToolStripMenuItem
             // 
             this.removeGameToolStripMenuItem.Name = "removeGameToolStripMenuItem";
-            this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.removeGameToolStripMenuItem.Text = "Remove game";
             this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
+            // 
+            // viewGameSessions
+            // 
+            this.viewGameSessions.Name = "viewGameSessions";
+            this.viewGameSessions.Size = new System.Drawing.Size(178, 22);
+            this.viewGameSessions.Text = "View game sessions";
+            this.viewGameSessions.Click += new System.EventHandler(this.viewGameSessions_Click);
             // 
             // statusStrip1
             // 
@@ -252,7 +259,7 @@
             this.appMenuSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeCheckFrequencyToolStripMenuItem});
             this.appMenuSettings.Name = "appMenuSettings";
-            this.appMenuSettings.Size = new System.Drawing.Size(180, 22);
+            this.appMenuSettings.Size = new System.Drawing.Size(137, 22);
             this.appMenuSettings.Text = "Settings";
             // 
             // changeCheckFrequencyToolStripMenuItem
@@ -265,7 +272,7 @@
             // viewOutputLogs
             // 
             this.viewOutputLogs.Name = "viewOutputLogs";
-            this.viewOutputLogs.Size = new System.Drawing.Size(180, 22);
+            this.viewOutputLogs.Size = new System.Drawing.Size(137, 22);
             this.viewOutputLogs.Text = "Output logs";
             this.viewOutputLogs.Click += new System.EventHandler(this.viewOutputLogs_Click);
             // 
@@ -285,13 +292,6 @@
             this.TrayIcon.Text = "Game Usage Tracker";
             this.TrayIcon.Visible = true;
             this.TrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIcon_MouseDoubleClick);
-            // 
-            // viewGameSessions
-            // 
-            this.viewGameSessions.Name = "viewGameSessions";
-            this.viewGameSessions.Size = new System.Drawing.Size(180, 22);
-            this.viewGameSessions.Text = "View game sessions";
-            this.viewGameSessions.Click += new System.EventHandler(this.viewGameSessions_Click);
             // 
             // GameUsageTracker
             // 
