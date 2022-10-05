@@ -27,7 +27,7 @@ namespace GameUsageTracker
         {
             foreach (GameSession session in gameSessions)
             {
-                string[] newRow = { session.Timestamp.ToString(), session.StartTime.ToString(), session.ExitTime.ToString(), session.TotalRuntime.ToString() };
+                string[] newRow = { session.Timestamp.ToString("dd/MM/yyyy"), session.StartTime.ToString("HH:mm tt"), session.ExitTime.ToString("HH:mm tt"), session.TotalRuntime.ToString("hh' Hours 'mm' Minutes 'ss' Seconds'") };
                 sessionGridView.Rows.Add(newRow);
             }
 

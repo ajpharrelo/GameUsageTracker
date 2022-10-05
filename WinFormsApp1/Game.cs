@@ -30,7 +30,7 @@ namespace WinFormsApp1
     public class GameSession
     {
         public string GameExecutable { get; set; }
-        public TimeSpan? TotalRuntime { get; set; }
+        public TimeSpan TotalRuntime { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime ExitTime { get; set; }
         public DateTime Timestamp { get; set; }
