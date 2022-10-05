@@ -27,7 +27,7 @@ namespace WinFormsApp1
         }
     }
 
-    internal class GameSession
+    public class GameSession
     {
         public string GameExecutable { get; set; }
         public TimeSpan? TotalRuntime { get; set; }

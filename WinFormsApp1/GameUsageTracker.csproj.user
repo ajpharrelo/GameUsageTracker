@@ -16,5 +16,8 @@
     <Compile Update="OutputLog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SessionViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

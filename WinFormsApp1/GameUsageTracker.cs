@@ -39,6 +39,18 @@ namespace WinFormsApp1
             }
         }
 
+        private string GetSelectedGame()
+        {
+            if (listView2.SelectedIndices.Count > 0)
+            {
+                string gameTitle = listView2.SelectedItems[0].Text;
+                addLog(gameTitle + " removed from watch list.");
+                return gameTitle;
+            }
+
+            return "";
+        }
+
         #endregion
 
         #region Application Startup
@@ -397,17 +409,15 @@ namespace WinFormsApp1
 
         private void removeGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listView2.SelectedIndices.Count > 0)
-            {
-                string gameTitle = listView2.SelectedItems[0].Text;
+            string selectedGame = GetSelectedGame();
 
-                Game? gameRemove = GameList.Find(g => g.Title == gameTitle);
-                if(gameRemove != null)
-                    GameList.Remove(gameRemove);
-                    SaveGameList();
-                    LoadGameList();
-            }
+            Game? gameRemove = GameList.Find(g => g.Title == selectedGame);
+            if (gameRemove != null)
+                GameList.Remove(gameRemove);
+            SaveGameList();
+            LoadGameList();
         }
+        
 
         private void changeCheckFrequencyToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -428,5 +438,19 @@ namespace WinFormsApp1
             ShowInTaskbar = true;
         }
         #endregion
+
+        private void viewGameSessions_Click(object sender, EventArgs e)
+        {
+            string gameTitle = GetSelectedGame();
+            string execLocation = GameList.Find(g => g.Title == gameTitle).ExecutablePath;
+            IEnumerable<GameSession> sessions = from x in GameSessionList
+                                                where x.GameExecutable == execLocation
+                                                select x;
+
+            Form sessionViewer = new SessionViewer(sessions);
+            sessionViewer.StartPosition = FormStartPosition.CenterScreen;
+            sessionViewer.Text = gameTitle + " | Sessions";
+            sessionViewer.Show();
+        }
     }
 }
